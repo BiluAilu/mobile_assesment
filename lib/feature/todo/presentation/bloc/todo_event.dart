@@ -9,7 +9,7 @@ abstract class TodoEvent extends Equatable {
 
 
 class FetchTodosEvent extends TodoEvent{
-  FetchTodosEvent();
+  const FetchTodosEvent();
 }
 
 class UpdateTodosEvent extends TodoEvent{

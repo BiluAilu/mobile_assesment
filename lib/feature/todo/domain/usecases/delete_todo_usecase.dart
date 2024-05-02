@@ -3,7 +3,6 @@
 
 
 import 'package:assessment/core/core.dart';
-import 'package:assessment/feature/todo/data/models/todo_model.dart';
 import 'package:assessment/feature/todo/domain/repositories/todo_repository.dart';
 import 'package:dartz/dartz.dart';
 

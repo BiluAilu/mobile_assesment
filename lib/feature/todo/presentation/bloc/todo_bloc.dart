@@ -5,10 +5,8 @@ import 'package:assessment/feature/todo/domain/usecases/delete_todo_usecase.dart
 import 'package:assessment/feature/todo/domain/usecases/get_todos_usecase.dart';
 import 'package:assessment/feature/todo/domain/usecases/insert_todo_usecase.dart';
 import 'package:assessment/feature/todo/domain/usecases/update_todo_usecase.dart';
-import 'package:assessment/feature/todo/presentation/bloc/bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:http/http.dart';
 
 part 'todo_event.dart';
 part 'todo_state.dart';
@@ -76,7 +74,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
             String message = mapFailureToMessage(failure);
             emit(TodoError(message: message));
           }, (todos) {
-            emit(TodoDeleted(message: "deleted successfully"));
+            emit(const TodoDeleted(message: "deleted successfully"));
           });
        
 

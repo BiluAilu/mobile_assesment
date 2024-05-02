@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                       }
                       
                       else {
-                        print(state);
+                        
                           BlocProvider.of<TodoBloc>(context).add(const FetchTodosEvent());
                       
                         return const CircularProgressIndicator(

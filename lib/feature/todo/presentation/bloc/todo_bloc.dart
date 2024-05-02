@@ -33,6 +33,15 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
         }, (todos) {
           emit(TodoListLoaded(todos: todos));
         });
+      } else if (event is FetchTodosEvent) {
+        emit(TodoLoading());
+        final failureOrTodos = await getTodosUsecase.call(NoParams());
+        failureOrTodos.fold((failure) {
+          String message = mapFailureToMessage(failure);
+          emit(TodoError(message: message));
+        }, (todos) {
+          emit(TodoListLoaded(todos: todos));
+        });
       } else if (event is InsertTodosEvent) {
         emit(TodoLoading());
         final failureOrTodo =
@@ -69,16 +78,13 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
           });
         });
       } else if (event is DeleteTodoEvent) {
-          final failureOrTodos = await deleteTodoUsecase.call(event.id);
-          failureOrTodos.fold((failure) {
-            String message = mapFailureToMessage(failure);
-            emit(TodoError(message: message));
-          }, (todos) {
-            emit(const TodoDeleted(message: "deleted successfully"));
-          });
-       
-
-
+        final failureOrTodos = await deleteTodoUsecase.call(event.id);
+        failureOrTodos.fold((failure) {
+          String message = mapFailureToMessage(failure);
+          emit(TodoError(message: message));
+        }, (todos) {
+          emit(const TodoDeleted(message: "deleted successfully"));
+        });
       }
     });
   }

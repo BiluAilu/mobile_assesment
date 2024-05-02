@@ -46,7 +46,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
         'Content-Type': 'application/json',
       });
       if (response.statusCode == 200) {
-        final responseJson = json.decode(response.body)['data'];
+        final responseJson = json.decode(response.body);
 
         return TodoModel.todoList(jsonDecode(response.body));
       }

@@ -42,7 +42,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
   @override
   Future<List<TodoModel>> getTodo() async {
     try {
-      final response = await client.get(Uri.parse('$apiBaseUrl/'), headers: {
+      final response = await client.get(Uri.parse('$apiBaseUrl/?userId=$userId'), headers: {
         'Content-Type': 'application/json',
       });
       if (response.statusCode == 200) {

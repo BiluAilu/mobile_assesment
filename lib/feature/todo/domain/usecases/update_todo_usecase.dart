@@ -21,7 +21,7 @@ class UpdateTodoUsecase extends UseCase<TodoModel,UpdateTodoParams>{
 
 
 class UpdateTodoParams{
-  int  id;
+  int?  id;
     int? userId;
   String? title;
   bool? completed;

@@ -23,5 +23,7 @@ class InsertTodoParams{
     int? userId;
   String? title;
   bool? completed;
-  InsertTodoParams({this.userId=9, this.title= "", this.completed = false});
+  InsertTodoParams({
+    
+    this.userId=9, this.title= "", this.completed = false});
 }
